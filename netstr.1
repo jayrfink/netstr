@@ -1,0 +1,92 @@
+.TH NETSTR  1 "Feb 17, 2015" "version 0.18" "USER COMMANDS"
+.SH NAME
+netstr \- Make strings of network info
+.SH SYNOPSIS
+.B netstr
+scan [\--isup] {target}||[\--port n-N][\--time s.ms][\-V] {target}
+
+.B netstr
+scan6 [\--dgram] [\--port N] {ipv6addr}
+
+.B netstr
+passive [\--if <dev>] [\--threshold <n>] [\--polls <count>] [\--extra] {pcap-expr}
+
+.B netstr
+tcpdump [\--if <dev>] [\--polls] <count> [\--decode] {pcap-expr}
+
+.B netstr
+arpsniff [\--if <dev>] [\--polls <count>] [\--decode] {pcap-expr}
+.SH DESCRIPTION
+The
+.B netstr
+command can scan hosts actively or passively, sniff tcp data, sniff arp data and decode packets.
+.SH SCAN OPTIONS
+By default the scan uses a common ports list found in prog.h if no range is given or the strobe option is not used.
+.TP
+\-V Be verbose
+.TP
+--fast Only scan using the portlist (default) but also ratchet down per connection timeout after the first successful connection. Shaves off about 30% on long hauls.
+.TP
+\--isup Check to see if a host is up and exit. All other options and arguments are ignored except the host spec. Mistyping this can really muck up a scan. NOTE that firewalled hosts will fail with this scan.
+.TP
+\--line Print ports in a line without their service name (for parsing)
+.TP 
+--port n-N Scan a port range. Also takes a single port. NOTE by default if no ports are provided a common ports list is used.
+.TP
+--strobe Strobe ports 1-1024
+.TP 
+--time s.ms Set the timeout for each port connect.
+.SH SCAN6 OPTIONS (EXPERIMENTAL)
+.TP
+\--dgram Set the socket type to datagram
+.TP
+\--port N Set port. (Required)
+.SH PASSIVE SCAN OPTIONS
+.TP
+\--if <dev> Set the interface.
+.TP
+\--threshold <n> Set the per port and protocol threshold to n (this flags the port and protocol as a possible open)
+.TP 
+\--polls <count> Exit after capturing a certain number of polls.
+.TP
+\--extra Look for ports above 1024
+.TP
+\--no-verify Do not verify if a port is really running a service.
+.SH TCPDUMP/ARPSNIFF OPTIONS
+.TP
+\--if <dev> Set the interface.
+.TP
+\--polls <count> Exit after capturing a certain number of polls.
+.TP
+\--decode Decode packet data.
+.SH EXAMPLES
+Scan using the default portlist:
+
+   netstr scan somehost
+
+Scan only for port 22:
+
+   netstr scan --port 22 somehost
+
+Scan ports 22-80 on 192.168.1.0 and be verbose:
+
+   netstr scan --port 22-80 -V 192.168.1.1
+
+Passively scan for 32 packets, look for extra ports and use device en1:
+   netstr passive --extra --polls 32 --if en1 
+
+Sniff for web traffic
+   netstr tcpdump port 80
+
+Decode ARP packets and use device eth1:
+   netstr arpsniff --if eth1 --decode 
+
+.SH NOTES
+There is currently limited single port single host ipv6 support:
+
+	netstr scan6 --port 22  fe80::a00:27ff:fe40:3528%eth0
+
+For example works great. Also works with LAN accessible ipv6.
+
+.SH AUTHOR
+Jason R Fink <jay.fink@gmail.com>

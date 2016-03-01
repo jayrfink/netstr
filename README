@@ -1,0 +1,66 @@
+README FILE FOR NETSTR
+=========================
+LICENSE:  See COPYING in the source distribution for details.
+THE NAME: '(net)work-(str)ings'
+ABOUT:    netstr is a small, light and fast tool used to quickly investigate
+          a network.
+
+GOALS
+-----
+* Stay small
+* Use correct types (if it is a short int... make it a short int)
+
+FEATURES
+--------
+- ICMP Ping capability
+- Fast scanning 
+- Tiny footprint with only one dependency (pcap) for the sniffer
+- Easy to use and modify for your own systems
+- A solid default portlist, supports port ranges, strobing privileged ports
+  or single port scan
+- Fine grained timeout support in seconds, useconds or both
+- full tcpv4 connect for every port 
+- Very fast packet watching capability with little tiny footprint
+- ipv6 support (EXPERIMENTAL)
+- Session dump capability using libpcap during scans in parallel
+- Simple packet payload decoding in ascii
+- ARP traffic dumping
+- Passive tcpv4 port/host data collection (EXPERIMENTAL)
+
+SEE ALSO: The master TODO file
+
+CONFIGURE
+---------
+Not all systems support the destination directories for manual pages and
+binaries, edit the top of the Makefile to change these. Not ALL OF these
+have been tested.
+
+BUILD AND INSTALL UTILITIES
+---------------------------
+netstr has to be built for your platform. Tested platforms for this
+release are:
+	linux openbsd 
+platforms that should work fine are:
+	netbsd darwin freebsd
+* cd to where the sources are
+* make `uname` or make $platform-name (e.g. linux)
+
+For instance - NetBSD do the following:
+* cd to where the sources are
+* make netbsd
+
+Run `make install` to install to /usr/local/bin.
+
+Note that you can scan without pcap capabilities for a scanner only.
+To do so run:
+	make ${platform}-scan
+example:
+	make linux-scan
+
+UNINSTALL
+---------
+Run `make uninstall` in the source directory to remove.
+
+QUESTIONS/BRICKS
+----------------
+  jay.fink@gmail.com

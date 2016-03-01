@@ -1,0 +1,154 @@
+version 0.18
+ - Dropped support for subnet scanning. The way the connection software works
+   makes it stupid and figuring out how to endlessly support things like 
+   subnetting and supernetting is a black hole. Deferred this to wrapper
+   scripts.
+ - Created an ipv4_conn software module (NOT PROGRAM MODULE) that can be used 
+   by multiple programs. For now passive and scan both use it. 
+ - Revamped the entire scanning software for ipv4. It now uses base case loops
+   for strobes and ranges. The DEFAULT has changed to using a common ports
+   list which is only configurable at build time. The result is better 
+   performance.
+ - Redid the timeval bits for scan and passive. The timeouts were insanely
+   high. 
+ - Added a --fast capability which will drop to the minimum safe long haul
+   timeval (routed). This adds about 20-30% performance gains on ipv4 scans.
+ - Fixed a major bug in passive with options parsing, as in it wasn't doing
+   them at all. I think (not sure) an old copy of the code must have been
+   dumped into place and royally screwed this up.  
+ - Added line print which means print the ports out for v4 scans on a single
+   line.
+ - Gutted well over 300 lines of old garbage code that is not longer needed
+ - Slapped up some prototypes in certain header files to get vim-enhanced to
+   STFU and stop complaining.
+ - Fixed up usage print so it is readable.
+ - Documentia updates galore, like examples that work
+ - isroot_uid() utility added in utils.* 
+version 0.17
+ - Changed over to a connect and select model in scan to deal with routed
+   host scans (these timed out before or took too long)
+ - Modified isup to be a "bail on first successful port check" model
+ - Ripped out crap legacy code of litmus and isalive and so forth
+version 0.16
+ - Removed buggy `scan --ping` and replaced it with `scan --isup` it isn't
+   really a ping it is a single fast connect() attempt.
+ - Mega update to the TODO there is a lot of work that needs done
+ - Very minor formatting changes
+ - Updated manual page to reflect how `scan --isup` really works
+ - Updated info print to reflect how `scan --isup` really works
+version 0.15
+ - Renamed and renumerated due to copyright stuff
+ - Scan is faster when looking at hosts that do not have a local firewall
+ - Replaced isalive() with litmus() is_host_up 
+ - Passive port verification
+version 0.14
+ - Fixed bug in passive, print IPs when ports did not pass the threshold
+ - Optimized local variable lists for alignment speed
+ - Added threshold values to per/port per/protocol for passive scanning
+ - Do not add any addresses with a broadcast address in any octects to passive
+ - Updated README, LSM, TODO etc.
+ - Major program gutting. Merged code into a modularlike setup where
+   programs can be independently added.
+ - First pass at passive scanning
+ - Removed ping only option. That is what the ping command is for
+ - Migrated arp code out of main into arpsniff()
+ - Created a decoder helper function to decode all packet types
+ - Created a getlocaltime helper function so all packet types can print time
+version 0.13
+ - collapsed TODOs into the top of source files
+ - collapsed the pcap programs (ndecode, arpsniff and ntraf) into wiretraf
+ - moved nstrobe to scanlan
+ - Removed ntrace
+ - Removed nlist
+ - Print start and stop time at end of scan 
+ - Added arp traffic reading
+version 0.12
+ - Fixed a segv when host-part is used
+ - Added the nlist wrapper
+ - Trimmed output for pingonly scans
+version 0.11
+ - Fixed ntrace savelog for nstrobe data
+ - Added pingonly to ntrace (-P option)
+ - Added ndecode to ntrace (-F option: not default)
+ - Changed Makefile from flat copy and deletes to use for loops
+version 0.10
+ - Added saving scan trace to ntrace
+ - verified man pages vs. usage message
+ - changed -u to usage on nstrobe and use -P for ping for consistency
+ - ntraf now decodes type of protocol, currently grabs icmp, udp and tcp
+   a filter can override this
+ - changed ipdump to ntraf
+ - Added ntrace utility to fire off nstrobe and ntraf at the same time
+version 0.09
+ - fixed ipdump manpage
+ - added payload decoder ndecode 
+ - better input validation (still not perfect though)
+ - converted to standard exit codes everywhere
+ - nstrobe: Fixed AI_ADDRCONFIG error on NetBSD
+ - deleted mini portcheck program, quickport() routine does this in nstrobe
+ - Added primitive ipv6 support to nstrobe
+ - moved ip4map to nstrobe which is what it is really doing
+ - deleted all of the wrapper scripts
+version 0.08
+ - updated manpage for ip4map
+ - manpage for portcheck
+ - ip4map: changed -u to -h (help) & -P to -u for up; not sure that will stick
+ - portcheck added, single host and port for ipv6 and ipv4
+ - Migrated range/dot input parsing to helpers to lower ssize/cleanup main()
+ - Changed vflag to verbose since it is no longer a global
+ - Updated man pages and examples
+ - Got rid of no-service print feature - useless feature plus dropped a global
+ - Global scandata (flags, portrange and subnet) now in a data structure
+ - Changed -C to -c. Trying to get rid of caps options...
+ - Fixed README errors and typos
+ - Added ip6port (untested)
+version 0.07
+ - Printing start/stop for full scan now
+ - Manual pages for ip4dump and ip4port added
+ - Added nagios wrapper example script.
+ - Changed ip4port to a wrapper script. 
+ - Upper port range bound check bug, not serious just irritating.
+ - Made socket errors and isalive reusable in ip4utils.c
+ - Made copy_argv and printime reusable in utils.c
+ - Changed ns to ip4map
+ - Imported usniff as ip4dump utility
+ - Updated Manual Page for ip4map
+ - Update README for all
+ - Fixed segv in hostname specification bug in ip4map
+version 0.06
+ - Fixed major subnet looping bug
+ - Stable version
+ - Better TODO/Roadmap
+version 0.05
+ - Purtied up the code
+ - Now checks for self IP address and will skip self scanning if it is
+   detected
+ - Converted the -ts and -tu specifications to -t SECONDS.USECONDS format.
+version 0.04
+ - Changed -p option to support both -p PORTNO or -p STARTPORT-ENDPORT
+ - Enabled subetscanning on address specification instead of using
+   an option 
+ - Dumped single address code in favor of making
+   end equals start address if no end is specified (loop once)
+ - Dropped ckport in favor of a separate utility
+ - Removed subnet flag in favor of using the existence of a subnet
+   as the key for looping over hosts
+ - Enabled full connect for every port as an option
+ - Changed t flag to x flag for semantics
+ - Added ts flag for timeout seconds
+ - Added tu flag for timeout useconds
+ - Update man page and usage 
+version 0.03
+ - Manual page formatting fixed
+ - Speed up flag for pre-flight check only check to see if a host
+   is actually up the first time; skip it for each subsequent port
+version 0.02 aka vegas-merges
+ - Do not print port when checking 1 port in ns
+ - When doing ping-like check do not print port info
+ - Range support for ping check bug fixed
+version 0.01
+ - Added in-depth connect() error handling
+ - Added ping-like only check (isalive)
+ - Man page update
+version 0.00
+ - Initial revision 
