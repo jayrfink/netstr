@@ -1,8 +1,5 @@
 TODO File for netstr 
 --------------------------------------------------------------------------------
-v-0.18-release
-o lsm file
-
 v-0.19-patch
 o The timeout print when -V is specified is wrong if you over ride it
 
@@ -30,12 +27,11 @@ o the netstr guide book
 o scan verbosity needs more than what it has
 
 V-0.20-release
-o timer elapse
+o switch to a full distribution format with src/ scripts/ lib/ etc.
+
+o timer elapse for scan utils
 
 o Better linebreaking capability for any packet dumping
-
-o Listener, connect and concatenate support. No idea how to do these yet
-  and they are major pieces of software. 
 
 o For any connection oriented stuff add in a method to grab the local network
   address and compare it to the remote hosts network address. If they are on
@@ -49,4 +45,9 @@ o an interpreter. No idea how that would work.
 
 o parallel packet dumping while scanning.
 
+o bolt on uhttpd server
 
+o Listener, connect and concatenate support. No idea how to do these yet
+  and they are major pieces of software. 
+
+o more software modules where appropiate
