@@ -1,32 +1,15 @@
 TODO File for netstr 
 --------------------------------------------------------------------------------
-v-0.19-patch
-o The timeout print when -V is specified is wrong if you over ride it
+V-0.20-release
+o the netstr guide book
 
-o --fast and a timeout set lower than 0.3 seconds by the user are incompatible. 
-  right now the program will accept them which means one actually raises
-  the timeout after the first port connect :-)
+o Proper UDP support
 
 o Start wrapper scripts 
 
-o Scan6 needs a master timeout. Right now users can wrap it with a timeout
-  command or shell built in but it isn't always a guarentee they will have
-  that or know about it.
+o Consider making the userspec timeout if it is lower than default --fast
+  speedup a percentage drop of some sort.
 
-o UDP right now in some places is 'dgram' which is not entirely correct
-  proper udp support needs to be setup for scanning softwares
-
-o start/end time print for scan6
-
-o better output for scan6  (verbose, quiet, isup only)
-
-o Set default macros for the callout from passive to ipv4_conn.
-
-o the netstr guide book
-
-o scan verbosity needs more than what it has
-
-V-0.20-release
 o Build in classic UNIX style options. Users don't like being forced to
   exlcusively use GNUstyle long options only. At least where it is possible.
 
@@ -54,3 +37,11 @@ o Listener, connect and concatenate support. No idea how to do these yet
   and they are major pieces of software. 
 
 o more software modules where appropiate
+
+o syn support
+
+o banner support
+
+o portN,portN1,portN2 support
+
+o better packet reading ident?

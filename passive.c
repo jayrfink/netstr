@@ -59,7 +59,7 @@ void addport(char *ipaddr, uint16_t port, char *proto_name)
 		if (strcmp(current_ptr->host_ip_address, ipaddr) == 0) {
 			if ((verify_port)
 			    && (current_ptr->portdata.verified == 0))
-				if (!ipv4_conn(port, 0, 300000, ipaddr)); /*call ipv4_connect*/
+				if (!ipv4_conn(port, 0, PASSIVE_UTIMEO, ipaddr)); 
 			current_ptr->portdata.verified = 1;
 
 			for (x = 0; x < PORTMAX; x++) {

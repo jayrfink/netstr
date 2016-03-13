@@ -127,7 +127,8 @@ short int pcap_decode_flag;	/* do we wish to decode packets? */
 void decoder (u_char *, const struct pcap_pkthdr *, const u_char *);
 
 /**** SCAN PROGRAM HEADER DATA ****/
-#define PORTMAX 65535
+#define FAST_SCAN_TIMER 300000 /* When --fast drop to this after a good conn() */
+#define PORTMAX 65535 /* shouldn't this be a POSIX thing? */
 #define DEFAULT_START_PORT 1    /* default starting port to scan */
 #define DEFAULT_END_PORT 1024   /* default ending port to scan */
 #define DEFAULT_INET_TIMEOUT 0  /* default connect timeout */
@@ -140,6 +141,7 @@ static int portlist [] = { 22, 80, 445, 25, 37, 53, 111, 113, 139, 21, 42, 67,
 #define IPV4CW 16	/* IPv4 len */
 #define PORT_THRESHOLD_DEFAULT 16 /* Set for small networks */
 #define NPOLLS_DEFAULT 64 /* Very short passive scan */
+#define PASSIVE_UTIMEO 500000 /* Counterscan timeout */
 
 
 /**** USAGE Strings for all registered programs ****/

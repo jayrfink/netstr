@@ -1,3 +1,13 @@
+version 0.19
+ - The --time was improper, it was looking for -time by accident
+ - Changed timer so if a userspec less than 300000 useconds and they
+   specified --fast then the value less than 300000 useconds is used
+   because --fast will set useconds to 300000 after the first 
+   successful connection. In other words it used to nullify the
+   effect!
+ - Set a default UTIMEO for when passive calls ipv4_conn() (was hard
+   coded to 300000). Note that timeout in seconds is still 0.
+ - Added start and stop times for scan6
 version 0.18
  - Dropped support for subnet scanning. The way the connection software works
    makes it stupid and figuring out how to endlessly support things like 

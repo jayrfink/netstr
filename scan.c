@@ -22,7 +22,7 @@ struct scan_data {
 	short int lflag;       /* short printout flag (line print ports */
 	short int vflag;       /* Be verbose */
 	int inet_timeo;        /* Connect timeout in seconds */
-	int inet_utimeo;       /* Connect timeout useconds value for the anal */
+	int inet_utimeo;       /* Connect timeout useconds value */
 	char addr[1024];       /* The raw start address from stdin */
 } scandata;                /* Our base struct name */
 
@@ -76,8 +76,10 @@ static void portcheck(int port)
 			exit(EXIT_SUCCESS);
 		}
 
+		/* If --fast is on but user spec'd a lower timeout go with userspec */
 		if (sd->fflag) 
-			sd->inet_utimeo = 300000; /* If fast is on drop the timeout */
+			if (sd->inet_utimeo > FAST_SCAN_TIMER)
+				sd->inet_utimeo = FAST_SCAN_TIMER;
 
 		portinfo = getservbyport(htons(port),"tcp");
 		if (sd->lflag) /* if line print flag is set then do that */
@@ -243,7 +245,7 @@ int scan_main(int argc, char *argv[])
 			} else if (!strcmp(argv[i], "--strobe")) {
 				sd->port_start = DEFAULT_START_PORT;
 			/* timer specification */
-			} else if (!strcmp(argv[i], "-time")) {
+			} else if (!strcmp(argv[i], "--time")) {
 				timerparse(argv[i + 1]);
 				i++;
 			}
