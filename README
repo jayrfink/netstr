@@ -5,14 +5,26 @@ THE NAME: '(net)work-(str)ings'
 ABOUT:    netstr is a small, light and fast tool used to quickly investigate
           a network.
 
-GOALS
------
-* Stay small
-* Use correct types (if it is a short int... make it a short int)
+WHY
+---
+Not unlike a lot of sysadmins I have always had an interest in port scanning
+for mostly good reasons. I wanna know what is on the wire. But, I also don't
+need a lot of capabilities that ship with popular scanners and I wanted to
+have a grasp, not expertise, of how it works. Most importantly I wanted to do
+it in C and in a way that if others wanted to use the code doing so was 
+relatively easy. When I say easy I don't mean the code itself (although I
+try) but the entire collection of programs. The code works in a way that 
+anyone could easily break off one of the program modules and use it for
+something entirely different.
+
+... this took me awhile.
+
+But using a lot of simple ideas from a lot of different people out there I
+finally started putting together the foundation for what I hope to someday
+be a robust, easy to use, relatively small but efficient network utility.
 
 FEATURES
 --------
-- ICMP Ping capability
 - Fast scanning 
 - Tiny footprint with only one dependency (pcap) for the sniffer
 - Easy to use and modify for your own systems
@@ -21,11 +33,11 @@ FEATURES
 - Fine grained timeout support in seconds, useconds or both
 - full tcpv4 connect for every port 
 - Very fast packet watching capability with little tiny footprint
-- ipv6 support (EXPERIMENTAL)
+- ipv6 single port single host support
 - Session dump capability using libpcap during scans in parallel
 - Simple packet payload decoding in ascii
 - ARP traffic dumping
-- Passive tcpv4 port/host data collection (EXPERIMENTAL)
+- Passive (fuzzy... very fuzzy) tcpv4 port/host data collection
 
 SEE ALSO: The master TODO file
 
