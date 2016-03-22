@@ -10,6 +10,7 @@
 */
 
 #include "prog.h"
+#include "utils.h"
 
 static void quickport6(char *addr, char *portstring, char *socktype)
 {
@@ -100,10 +101,10 @@ int scan6_main(int argc, char *argv[])
 
 	strncpy(ip6addr, argv[argc - 1], 1023);
 	printime("Scan start: ");
-	start_time = return_time();
+	return_time();
 	quickport6(ip6addr, portstring, socktype);
 	printime("Scan end: ");
-	start_time = return_time();
+	return_time();
 
 	return EXIT_SUCCESS;
 
