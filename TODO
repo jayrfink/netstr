@@ -1,33 +1,58 @@
 TODO File for netstr 
 --------------------------------------------------------------------------------
-V-0.20-release
-o the netstr guide book
 
-o Proper UDP support
+Release Dependent
+------------------------
+v0.19
+ o experiment with line breaking of the packet printing bits in passive
+   and tcpdump. Maybe these should be common since they are doing the 
+   same prints just at different intervals.
 
-o Start wrapper scripts 
+v0.20
+o udp support for scanning and packet dumping. It is important that any
+  brush up work on the tcp side of those be done before doing this 
+  (basically to minimize the work)
 
+o the netstr book with examples, howtos and a source contribution guide.
+  there is no api but there is a modular system that could use some explaining
+
+o write some initial scripts and maybe even shell libs or something to get
+  the ball rolling on having some sort of decent scripts for users to be
+  able to get rolling with stuff faster
+
+
+Not tied to a release
+------------------------
 o Consider making the userspec timeout if it is lower than default --fast
-  speedup a percentage drop of some sort.
+  speedup a percentage drop of some sort. For example if userspec is 2
+  and --fast is invoked (seems kind of odd) after one successful connect
+  on a host drop it to 1.8 (or thereabouts) and also....
+
+o If --fast is invoked because there could be good reasons NOT to do this,
+  for any connection oriented stuff add in a method to grab the local network
+  address and compare it to the remote hosts network address. If they are on
+  the same network drop the useconds down to lowest possible value.
 
 o Build in classic UNIX style options. Users don't like being forced to
   exlcusively use GNUstyle long options only. At least where it is possible.
 
-o switch to a full distribution format with src/ scripts/ lib/ etc.
+o IPv6 Packet dumping (in all of its glory including decoding). 
+  Someday this has to be done, it is a "stop kicking the can" item
 
-o timer elapse for scan utils
 
-o Better linebreaking capability for any packet dumping
 
-o For any connection oriented stuff add in a method to grab the local network
-  address and compare it to the remote hosts network address. If they are on
-  the same network drop the useconds down to lowest possible value.
+EXPERIMENTAL/IDEAS
+------------------------
+These are skunkworks ideas. Stuff that probably will never make it in but
+could be fun or have a decent enough cool factor tied to them. 
 
-o ipv6 packet reading and handling
+o an interpreter like some other systems have that can be interactive or fed
+  scripts. Arguably, a shell is enough for scripting, but something that could
+  be interactive might be cool.
 
-v-IN-YOUR-DREAMS
-
-o an interpreter. No idea how that would work.
+o A simple timer elapse for all scanning utilitues, start, end and elapsed.
+  Yes, `time netstr cmd a1 a2...` works for this and provides details but
+  possibly there is more information to be discovered doing it internally
 
 o parallel packet dumping while scanning.
 
@@ -35,8 +60,6 @@ o bolt on uhttpd server
 
 o Listener, connect and concatenate support. No idea how to do these yet
   and they are major pieces of software. 
-
-o more software modules where appropiate
 
 o syn support
 
