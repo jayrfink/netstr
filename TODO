@@ -4,14 +4,11 @@ TODO File for netstr
 Release Dependent
 ------------------------
 v0.19
- o experiment with line breaking of the packet printing bits in passive
-   and tcpdump. Maybe these should be common since they are doing the 
-   same prints just at different intervals.
+ o Bug hunt
 
 v0.20
-o udp support for scanning and packet dumping. It is important that any
-  brush up work on the tcp side of those be done before doing this 
-  (basically to minimize the work)
+o UDP Support for ipv4 scanning. Make sure all of the tcp scanning
+  bits are in order. 
 
 o the netstr book with examples, howtos and a source contribution guide.
   there is no api but there is a modular system that could use some explaining
@@ -23,6 +20,8 @@ o write some initial scripts and maybe even shell libs or something to get
 
 Not tied to a release
 ------------------------
+o UDP Support for passive (this is super hard to test)
+
 o Consider making the userspec timeout if it is lower than default --fast
   speedup a percentage drop of some sort. For example if userspec is 2
   and --fast is invoked (seems kind of odd) after one successful connect
@@ -38,6 +37,8 @@ o Build in classic UNIX style options. Users don't like being forced to
 
 o IPv6 Packet dumping (in all of its glory including decoding). 
   Someday this has to be done, it is a "stop kicking the can" item
+  pcap can deliver these at the same time so existing code needs to
+  additions to handle v6 data
 
 
 
