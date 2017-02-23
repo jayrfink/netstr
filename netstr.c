@@ -20,6 +20,7 @@
  */
 extern struct prog scan;
 extern struct prog scan6;
+extern struct prog udpscan;
 #ifndef SCAN
 extern struct prog passive;
 extern struct prog tcpdump;
@@ -28,11 +29,11 @@ extern struct prog arpsniff;
 
 #ifndef SCAN
 static struct prog *programs[] = {
-	&scan, &scan6, &passive, &tcpdump, &arpsniff, NULL
+	&scan, &scan6, &udpscan, &passive, &tcpdump, &arpsniff, NULL
 };
 #else
 static struct prog *programs[] = {
-	&scan, &scan6, NULL
+	&scan, &scan6, &udpscan, NULL
 };
 #endif
 
@@ -41,11 +42,11 @@ static void print_usage(void)
 {
 	fprintf(stderr, "Usage: netstr <command> <args> ...\n");
 #ifndef SCAN
-	fprintf(stderr, "%s\n%s\n%s\n%s\n%s\n",
-		SCAN_USAGE, SCAN6_USAGE, PASSIVE_USAGE,
+	fprintf(stderr, "%s\n%s\n%s\n%s\n%s\n%s\n",
+		SCAN_USAGE, SCAN6_USAGE, UDPSCAN_USAGE, PASSIVE_USAGE,
 		TCPDUMP_USAGE, ARPSNIFF_USAGE);
 #else
-	fprintf(stderr, "%s\n%s\n", SCAN_USAGE, SCAN6_USAGE);
+	fprintf(stderr, "%s\n%s\n", SCAN_USAGE, SCAN6_USAGE, UDPSCAN_USAGE);
 #endif
 }
 

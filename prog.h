@@ -14,6 +14,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/time.h>
+#include <sys/select.h>
 #include <pcap.h>
 #include <netinet/in_systm.h>
 #include <netinet/in.h>
@@ -42,6 +43,9 @@
 #include <netinet/if_ether.h>
 #endif
 #include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <sys/time.h>
 #include <time.h>
 
 
@@ -148,6 +152,7 @@ static int portlist [] = { 22, 80, 445, 25, 37, 53, 111, 113, 139, 21, 42, 67,
 #define SCAN_USAGE "netstr scan     --isup <host> || --port [n]-N| | --strobe |\n                --time s.usec | --fast | -V <host>"
 
 #define SCAN6_USAGE "netstr scan6    --dgram | --port N <ipv6addr>"
+#define UDPSCAN_USAGE "netstr udpscan  --timeout <host>"
 #ifndef SCAN
 #define ARPSNIFF_USAGE "netstr arpsniff --if <dev> | --polls <count> | --decode {pcap-expr}"
 #define PASSIVE_USAGE "netstr passive  --if <dev> | --polls <count> | --threshold <n> |  \n                --extra | --no-verify {pcap-expr}"

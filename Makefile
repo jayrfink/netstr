@@ -6,7 +6,7 @@ CC=gcc
 JUNK=a.out
 BINS=netstr
 PCAP_PROGS=passive.c tcpdump.c arpsniff.c decode.c 
-SCAN_PROGS=scan.c scan6.c 
+SCAN_PROGS=scan.c scan6.c udpscan.c
 SRCS=utils.c ipv4_conn.c
 LIBS="-lpcap"
 
