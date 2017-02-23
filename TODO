@@ -3,12 +3,10 @@ TODO File for netstr
 
 Release Dependent
 ------------------------
-v0.19
- o Bug hunt
-
 v0.20
-o UDP Support for ipv4 scanning. Make sure all of the tcp scanning
-  bits are in order. 
+o UDP Timer and timeout verbosity 
+
+o UDP fine grained timer support
 
 o the netstr book with examples, howtos and a source contribution guide.
   there is no api but there is a modular system that could use some explaining
