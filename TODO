@@ -1,57 +1,33 @@
 TODO File for netstr 
---------------------------------------------------------------------------------
+- The netstr guide. It is big enough now that a complete guide broken into
+  parts is a good idea.
+   * Section 1 Usage
+   * Section 2 Design 
+   * Section 3 Contributing
 
-Release Dependent
-------------------------
-v0.20
-o the netstr book with examples, howtos and a source contribution guide.
-  there is no api but there is a modular system that could use some explaining
+- Shell and/or Perl wrappers/scripts such as:
+   * Port iteration for scan6
+   * Subnet iteration for scan and udpscan
+   * Alias rcfile 
+   * Servicename-to-port translator using /etc/services
+   * Perl daemon that uses passive as a medicore IPS
 
-o write some initial scripts and maybe even shell libs or something to get
-  the ball rolling on having some sort of decent scripts for users to be
-  able to get rolling with stuff faster
+- Consider adding a speedup based on percentage in scan4 software(s)
+  Ex: if someone defines the timeout as 2 and --fast is specified 
+      (which would be strange) drop by 10% (or .2) to 1.8
 
+- ipv6 scan timer based off of how udpscan host timeout works
 
-Not tied to a release
-------------------------
-o UDP Support for passive (this is super hard to test)
-
-o Consider making the userspec timeout if it is lower than default --fast
-  speedup a percentage drop of some sort. For example if userspec is 2
-  and --fast is invoked (seems kind of odd) after one successful connect
-  on a host drop it to 1.8 (or thereabouts) and also....
-
-o IPv6 Packet dumping (in all of its glory including decoding). 
+- IPv6 Packet dumping (in all of its glory including decoding). 
   Someday this has to be done, it is a "stop kicking the can" item
   pcap can deliver these at the same time so existing code needs to
   additions to handle v6 data
 
+- parallel packet dumping while scanning.
 
+- a few common supported things out there
+   * service fingerprinting identification on scanning and reading
+   * syn support
+   * banner support
 
-EXPERIMENTAL/IDEAS
-------------------------
-These are skunkworks ideas. Stuff that probably will never make it in but
-could be fun or have a decent enough cool factor tied to them. 
-
-o an interpreter like some other systems have that can be interactive or fed
-  scripts. Arguably, a shell is enough for scripting, but something that could
-  be interactive might be cool.
-
-o A simple timer elapse for all scanning utilitues, start, end and elapsed.
-  Yes, `time netstr cmd a1 a2...` works for this and provides details but
-  possibly there is more information to be discovered doing it internally
-
-o parallel packet dumping while scanning.
-
-o bolt on uhttpd server
-
-o Listener, connect and concatenate support. No idea how to do these yet
-  and they are major pieces of software. 
-
-o syn support
-
-o banner support
-
-o portN,portN1,portN2 support
-
-o better packet reading ident?
+- Better/more flexible port specification
