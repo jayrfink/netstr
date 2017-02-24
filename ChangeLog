@@ -1,4 +1,6 @@
 version 0.20
+ - Start/end time for udpscan verbosity plus what the timeout is
+ - Added show capability to udpscan (shows the UDP payloads and data)
  - Initial UDP Support added 
  - Moved prog.h to netstr.h to avoid any future conflicts
 version 0.19

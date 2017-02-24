@@ -4,10 +4,6 @@ TODO File for netstr
 Release Dependent
 ------------------------
 v0.20
-o UDP Timer and timeout verbosity 
-
-o UDP fine grained timer support
-
 o the netstr book with examples, howtos and a source contribution guide.
   there is no api but there is a modular system that could use some explaining
 
@@ -24,14 +20,6 @@ o Consider making the userspec timeout if it is lower than default --fast
   speedup a percentage drop of some sort. For example if userspec is 2
   and --fast is invoked (seems kind of odd) after one successful connect
   on a host drop it to 1.8 (or thereabouts) and also....
-
-o If --fast is invoked because there could be good reasons NOT to do this,
-  for any connection oriented stuff add in a method to grab the local network
-  address and compare it to the remote hosts network address. If they are on
-  the same network drop the useconds down to lowest possible value.
-
-o Build in classic UNIX style options. Users don't like being forced to
-  exlcusively use GNUstyle long options only. At least where it is possible.
 
 o IPv6 Packet dumping (in all of its glory including decoding). 
   Someday this has to be done, it is a "stop kicking the can" item
