@@ -31,7 +31,8 @@ FEATURES
 - A solid default portlist, supports port ranges, strobing privileged ports
   or single port scan
 - Fine grained timeout support in seconds, useconds or both
-- full tcpv4 connect for every port 
+- UDP Support
+- full connect for every port 
 - Very fast packet watching capability with little tiny footprint
 - ipv6 single port single host support
 - Session dump capability using libpcap during scans in parallel
