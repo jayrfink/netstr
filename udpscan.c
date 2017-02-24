@@ -4,7 +4,7 @@
  * See Copying files for details
  */
 
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 /* XXX mv these out to a header file ??? */
@@ -127,7 +127,7 @@ int udpscan_main(int argc, char *argv[])
 
     default:
 		for (i = 1; i < argc - 1; i++) {
-			if (!strcmp(argv[i], "--timeout")) {
+			if (!strcmp(argv[i], "--timeo")) {
 				conf.timeout = atoi(argv[i + 1]);
 			}
 		}

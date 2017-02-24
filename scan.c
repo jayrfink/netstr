@@ -4,7 +4,7 @@
  * See Copying files for details
  */
 
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 #include "ipv4_conn.h"
 

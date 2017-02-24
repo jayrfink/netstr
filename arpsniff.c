@@ -1,7 +1,7 @@
 
 #define _BSD_SOURCE 1
 
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 /* This is really just a vanilla libpcap reader using arp it is a pretty

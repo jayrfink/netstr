@@ -9,6 +9,9 @@ scan [\--isup] {target}||[\--port n-N][\--time s.ms][\-V] {target}
 scan6 [\--dgram] [\--port N] {ipv6addr}
 
 .B netstr
+udpscan [\-timeo seconds] {target}
+
+.B netstr
 passive [\--if <dev>] [\--threshold <n>] [\--polls <count>] [\--extra] {pcap-expr}
 
 .B netstr
@@ -80,6 +83,9 @@ Sniff for web traffic
 
 Decode ARP packets and use device eth1:
    netstr arpsniff --if eth1 --decode 
+
+Perform a udpscan
+   netstr udpscan somehost.somedomain.tld
 
 .SH NOTES
 There is currently limited single port single host ipv6 support:

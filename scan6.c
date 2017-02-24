@@ -4,12 +4,7 @@
  * See COPYING file for license details
  */
 
-/* EXPERIMENTAL: Single host, single port which is about as good as it
-                 gets for now. I dunno how many people have looked at
-                 ipv6 code but the word "simple" is nowhere to be found
-*/
-
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 static void quickport6(char *addr, char *portstring, char *socktype)

@@ -1,5 +1,6 @@
 version 0.20
  - Initial UDP Support added 
+ - Moved prog.h to netstr.h to avoid any future conflicts
 version 0.19
  - The --time was improper, it was looking for -time by accident
  - Changed timer so if a userspec less than 300000 useconds and they

@@ -6,7 +6,7 @@
 
 #define _BSD_SOURCE 1
 
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 /*

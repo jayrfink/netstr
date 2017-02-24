@@ -13,7 +13,7 @@
  * more stuff at runtime start.
  */
 
-#include "prog.h"
+#include "netstr.h"
 
 /*
  * New programs are registered here

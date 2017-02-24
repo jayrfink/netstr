@@ -7,7 +7,7 @@
 #define _BSD_SOURCE 1
 
 #include "ipv4_conn.h"
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 static int xflag = 0;		/* Xtra ports flag. Goes past 1024 */

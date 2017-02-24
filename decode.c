@@ -7,7 +7,7 @@
  * See COPYING file for license 
  */
 
-#include "prog.h"
+#include "netstr.h"
 #include "utils.h"
 
 void decoder(u_char * args, const struct pcap_pkthdr *header,
