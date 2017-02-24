@@ -25,9 +25,4 @@ TODO File for netstr
 
 - parallel packet dumping while scanning.
 
-- a few common supported things out there
-   * service fingerprinting identification on scanning and reading
-   * syn support
-   * banner support
-
 - Better/more flexible port specification
