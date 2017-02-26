@@ -1,10 +1,4 @@
 TODO File for netstr 
-- The netstr guide. It is big enough now that a complete guide broken into
-  parts is a good idea.
-   * Section 1 Usage
-   * Section 2 Design 
-   * Section 3 Contributing
-
 - Shell and/or Perl wrappers/scripts such as:
    * Port iteration for scan6
    * Subnet iteration for scan and udpscan
