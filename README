@@ -26,19 +26,19 @@ be a robust, easy to use, relatively small but efficient network utility.
 FEATURES
 --------
 - Fast scanning 
-- Tiny footprint with only one dependency (pcap) for the sniffer
+- Tiny footprint with only one external dependency (pcap) for the sniffer
 - Easy to use and modify for your own systems
 - A solid default portlist, supports port ranges, strobing privileged ports
   or single port scan
-- Fine grained timeout support in seconds, useconds or both
-- UDP Support
+- Fine grained ipv4 scan timeout support in seconds, useconds or both
+- UDP Support with modifiable host timeout
 - full connect for every port 
 - Very fast packet watching capability with little tiny footprint
 - ipv6 single port single host support
-- Session dump capability using libpcap during scans in parallel
 - Simple packet payload decoding in ascii
 - ARP traffic dumping
 - Passive (fuzzy... very fuzzy) tcpv4 port/host data collection
+  and counter scan capability
 
 SEE ALSO: The master TODO file
 

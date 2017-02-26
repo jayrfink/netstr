@@ -1,4 +1,19 @@
 TODO File for netstr 
+This is more or less in order but not tied to a release
+
+- ipv6 scan timer based off of how udpscan host timeout works
+
+- Decoding is one common piece of pcap code that could go into its own
+  software module (not program module), look for other pcap common bits
+  that might be a canidate for that and move it all into pcap_ops or 
+  something like that. Otherwise move it to the utility software module.
+  Speaking of which look for more stuff to move to the utils software module.
+
+- Without a doubt Passive probably could use fleshing out and even a 
+  daemon mode possibly.
+
+- Header files need properly ordered 
+
 - Shell and/or Perl wrappers/scripts such as:
    * Port iteration for scan6
    * Subnet iteration for scan and udpscan
@@ -10,13 +25,16 @@ TODO File for netstr
   Ex: if someone defines the timeout as 2 and --fast is specified 
       (which would be strange) drop by 10% (or .2) to 1.8
 
-- ipv6 scan timer based off of how udpscan host timeout works
-
 - IPv6 Packet dumping (in all of its glory including decoding). 
   Someday this has to be done, it is a "stop kicking the can" item
   pcap can deliver these at the same time so existing code needs to
   additions to handle v6 data
 
-- parallel packet dumping while scanning.
+- Porting to the BSDs, possibly start building packages for a variety of
+  different Linux distros and BSD systems
+   * Vet out useless includes during this process
+
+- Once there are a few scripts and maybe more src files it might be time
+  to reorganize the layout of the source distribution into subdirectories
 
 - Better/more flexible port specification
